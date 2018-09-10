@@ -2,11 +2,10 @@ package config
 
 import com.zaxxer.hikari.HikariConfig
 import com.zaxxer.hikari.HikariDataSource
-import org.sql2o.Sql2o
+import javax.sql.DataSource
 
 val ds = createDataSource()
 
-val sqlDs = Sql2o(ds)
 
 private fun createDataSource(): HikariDataSource {
     val config = HikariConfig()
@@ -21,5 +20,4 @@ private fun createDataSource(): HikariDataSource {
     return HikariDataSource(config)
 }
 
-
-fun getDataSource(): Sql2o = sqlDs
+fun getDataSource(): DataSource = ds
